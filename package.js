@@ -11,9 +11,15 @@ var client      = ['client'];
 var server      = ['server'];
 var cordova     = ['web.cordova'];
 
+// Npm.depends({
+//     'promise': '6.1.0'
+// });
+
 Package._transitional_registerBuildPlugin({
     name: "compilees6plugin",
-    use: [],
+    use: [
+        'underscore'
+    ],
     sources: [
         'plugin/compile.es6.plugin.js'
     ],
@@ -25,9 +31,16 @@ Package.on_use(function(api) {
 });
 
 Package.on_test(function (api) {
-    api.use(['test-helpers', 'tinytest', 'jquery', 'templating', 'blaze', 'ui', "particle4dev:6to5"]);
+    api.use(['test-helpers', 'tinytest', "particle4dev:6to5"]);
 
     api.add_files([
-        
-    ], both);
+        'tests/classes.es6'
+    ],
+    both,
+    {bare: true});
+
+    api.add_files([
+        'tests/classes.test.js'
+    ],
+    both);
 });
