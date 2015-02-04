@@ -34,7 +34,7 @@ Package.on_test(function (api) {
     api.use(['test-helpers', 'tinytest', "particle4dev:6to5"]);
 
     api.add_files([
-        'tests/classes.es6'
+        'tests/classes.es6.js'
     ],
     both,
     {bare: true});

@@ -32,9 +32,8 @@ var addSharedHeader = function (source, sourceMapJSON) {
 var compile = function(compileStep) {
     var source = compileStep.read().toString('utf8');
     var outputFile = compileStep.inputPath + ".js";
+    outputFile = outputFile.replace(/\.es6\.js$/, '.js');
     // https://github.com/6to5/6to5/issues/285
-    // console.log(compileStep.declaredExports);
-    // console.log(outputFile);
     var options = {
         filename: outputFile,
         sourceMap: true,
@@ -52,9 +51,6 @@ var compile = function(compileStep) {
             e.message
         );
     }
-    // console.log('====');
-    // console.log(res.code);
-    // console.log('====');
 
     var sourceWithMap = addSharedHeader(res.code, res.map);
 
@@ -63,10 +59,10 @@ var compile = function(compileStep) {
         sourcePath: compileStep.inputPath,
         data: sourceWithMap.source,
         sourceMap: sourceWithMap.sourceMap,
-        bare: compileStep.fileOptions.bare
+        // bare: compileStep.fileOptions.bare
         // # Normally, variables should be file-local, but this file is loaded with {bare:
         // # true}, so it should be readable by bare_tests.js
     });
 }
 
-Plugin.registerSourceHandler("es6", compile);
+Plugin.registerSourceHandler("es6.js", compile);
