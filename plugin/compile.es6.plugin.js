@@ -1,4 +1,4 @@
-var to5     = Npm.require('6to5');
+var to5     = Npm.require('babel');
 // https://github.com/meteor/meteor/tree/devel/packages/coffeescript
 // https://github.com/6to5/gulp-6to5/blob/master/index.js
 var addSharedHeader = function (source, sourceMapJSON) {

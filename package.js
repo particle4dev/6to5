@@ -1,8 +1,8 @@
 Package.describe({
     summary: "Use JavaScript of the future in current major JavaScript engines.",
     version: "1.0.0",
-    name: "particle4dev:6to5",
-    git: "https://github.com/particle4dev/6to5.git"
+    name: "particle4dev:babel",
+    git: "https://github.com/particle4dev/babel.git"
 });
 
 // meteor test-packages ./
@@ -23,7 +23,7 @@ Package._transitional_registerBuildPlugin({
     sources: [
         'plugin/compile.es6.plugin.js'
     ],
-    npmDependencies: {'6to5': '3.3.4'}
+    npmDependencies: {'babel': '4.0.1'}
 });
 
 Package.on_use(function(api) {
@@ -31,13 +31,14 @@ Package.on_use(function(api) {
 });
 
 Package.on_test(function (api) {
-    api.use(['test-helpers', 'tinytest', "particle4dev:6to5"]);
+    api.use(['test-helpers', 'tinytest', "particle4dev:babel"]);
 
     api.add_files([
         'tests/classes.es6.js'
     ],
-    both,
-    {bare: true});
+    both
+    //, {bare: true});
+    );
 
     api.add_files([
         'tests/classes.test.js'
