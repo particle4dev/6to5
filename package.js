@@ -18,7 +18,6 @@ var cordova     = ['web.cordova'];
 Package._transitional_registerBuildPlugin({
     name: "compilees6plugin",
     use: [
-        'underscore'
     ],
     sources: [
         'plugin/compile.es6.plugin.js'
